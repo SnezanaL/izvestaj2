@@ -18,13 +18,18 @@
   <!-- Optional theme -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.js"></script>
 
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    
+   
   <!-- chart.js@3.2.0 -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.2.0/dist/chart.min.js" integrity="sha256-ovnFmAOngtHmlhZzPyGrofexz4Kdik4kEobc8B9r1Yk=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+ 
+  <!-- chart.js@3.2.0 -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/chart.js@3.2.0/dist/chart.min.js" integrity="sha256-ovnFmAOngtHmlhZzPyGrofexz4Kdik4kEobc8B9r1Yk=" crossorigin="anonymous"></script> -->
   <!-- <link rel="stylesheet" href="styles.css"> -->
   <title>HealthLy - Medical report - Health and Therapy</title>
   <script src="https://use.typekit.net/bkt6ydm.js"></script>
@@ -39,6 +44,14 @@
 
 <style>
 
+canvas {
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    margin-top: 60px;
+    margin-bottom: 30px;
+}
+
 body {
   color: #768390;
   background: #FFF;
@@ -46,7 +59,6 @@ body {
   padding: 0;
   -webkit-font-smoothing: antialiased;
   font-size: 15px;
-
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -100,127 +112,6 @@ a:hover {
   font-size: 16px;
   max-width: 400px;
 }
-
-/*==================================
-    TIMELINE
-==================================*/
-/*-- GENERAL STYLES
-------------------------------*/
-.timeline {
-  line-height: 1.4em;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  width: 100%;
-}
-.timeline h1, .timeline h2, .timeline h3, .timeline h4, .timeline h5, .timeline h6 {
-  line-height: inherit;
-}
-
-/*----- TIMELINE ITEM -----*/
-.timeline-item {
-  padding-left: 40px;
-  position: relative;
-}
-.timeline-item:last-child {
-  padding-bottom: 0;
-}
-
-/*----- TIMELINE INFO -----*/
-.timeline-info {
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 3px;
-  margin: 0 0 0.5em 0;
-  text-transform: uppercase;
-  white-space: nowrap;
-}
-
-/*----- TIMELINE MARKER -----*/
-.timeline-marker {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 15px;
-}
-.timeline-marker:before {
-  /* background: #22dac8; */
-  border: 3px solid transparent;
-  border-radius: 100%;
-  content: "";
-  display: block;
-  height: 15px;
-  position: absolute;
-  top: 4px;
-  left: 0;
-  width: 15px;
-  transition: background 0.3s ease-in-out, border 0.3s ease-in-out;
-}
-.timeline-marker.blue:before {
-  background: #22a6c0;
-}
-.timeline-marker.green:before {
-  background: #21dfc8;
-}
-.timeline-marker:after {
-  content: "";
-  width: 3px;
-  background: #CCD5DB;
-  display: block;
-  position: absolute;
-  top: 24px;
-  bottom: 0;
-  left: 6px;
-}
-.timeline-item:last-child .timeline-marker:after {
-  content: none;
-}
-
-.timeline-item:not(.period):hover .timeline-marker:before {
-  background: transparent;
-  border: 3px solid #22dac8;
-}
-
-/*----- TIMELINE CONTENT -----*/
-.timeline-content {
-  padding-bottom: 40px;
-}
-.timeline-content p:last-child {
-  margin-bottom: 0;
-}
-
-/*----- TIMELINE PERIOD -----*/
-.period {
-  padding: 0;
-}
-.period .timeline-info {
-  display: none;
-}
-.period .timeline-marker:before {
-  background: transparent;
-  content: "";
-  width: 15px;
-  height: auto;
-  border: none;
-  border-radius: 0;
-  top: 0;
-  bottom: 30px;
-  position: absolute;
-  border-top: 3px solid #CCD5DB;
-  border-bottom: 3px solid #CCD5DB;
-}
-.period .timeline-marker:after {
-  content: "";
-  height: 32px;
-  top: auto;
-}
-.period .timeline-content {
-  padding: 40px 0 70px;
-}
-.period .timeline-title {
-  margin: 0;
-}
 .terapy {
   font-size: 19px;
 }
@@ -264,6 +155,9 @@ a:hover {
     background: #4b5558;
     padding: 35px 2vh;
 }
+table {
+  /* table-layout:fixed; */
+}
 .green-table {
     background: #21dfc8;
     border-radius: 5px;
@@ -272,6 +166,12 @@ a:hover {
 }
 .diagram {
     margin-top: 30px;
+}
+canvas {
+  height: 400px;
+}
+.chartjs-size-monitor {
+  position: relative !important;
 }
 .mb-5 {
   margin-bottom: 100px;
@@ -317,9 +217,6 @@ a:hover {
   .alert {
     position: relative;
   }
-  #ttip-box {
-
-  }
   .tt-text {
     display: inline-block;
     margin-left: 12px;
@@ -351,111 +248,20 @@ a:hover {
     filter: drop-shadow(-1px 3px 3px rgba(81, 203, 238, 1));
     -webkit-filter: drop-shadow(-1px 3px 3px rgba(81, 203, 238, 1));
 }
-
-/*----------------------------------------------
-    MOD: TIMELINE SPLIT
-----------------------------------------------*/
-@media (min-width: 768px) {
-  .timeline-split .timeline, .timeline-centered .timeline {
-    display: table;
-  }
-  .timeline-split .timeline-item, .timeline-centered .timeline-item {
-    display: table-row;
-    padding: 0;
-  }
-  .timeline-split .timeline-info, .timeline-centered .timeline-info,
-.timeline-split .timeline-marker,
-.timeline-centered .timeline-marker,
-.timeline-split .timeline-content,
-.timeline-centered .timeline-content,
-.timeline-split .period .timeline-info {
-    display: table-cell;
-    vertical-align: top;
-  }
-  .timeline-split .timeline-marker, .timeline-centered .timeline-marker {
-    position: relative;
-  }
-  .timeline-split .timeline-content, .timeline-centered .timeline-content {
-    padding-left: 30px;
-  }
-  .timeline-split .timeline-info, .timeline-centered .timeline-info {
-    padding-right: 30px;
-  }
-  .timeline-split .period .timeline-title, .timeline-centered .period .timeline-title {
-    position: relative;
-    left: -45px;
-  }
-
-
-  
+.right {
+  text-align: right;
 }
-
-/*----------------------------------------------
-    MOD: TIMELINE CENTERED
-----------------------------------------------*/
-@media (min-width: 992px) {
-  .timeline-centered,
-.timeline-centered .timeline-item,
-.timeline-centered .timeline-info,
-.timeline-centered .timeline-marker,
-.timeline-centered .timeline-content {
-    display: block;
-    margin: 0;
-    padding: 0;
-  }
-  .timeline-centered .timeline-item {
-    padding-bottom: 40px;
-    overflow: hidden;
-  }
-  .timeline-centered .timeline-marker {
-    position: absolute;
-    left: 50%;
-    margin-left: -7.5px;
-  }
-  .timeline-centered .timeline-info,
-.timeline-centered .timeline-content {
-    width: 50%;
-  }
-  .timeline-centered > .timeline-item:nth-child(odd) .timeline-info {
-    float: left;
-    text-align: right;
-    padding-right: 30px;
-  }
-  .timeline-centered > .timeline-item:nth-child(odd) .timeline-content {
-    float: right;
-    text-align: left;
-    padding-left: 30px;
-  }
-  .timeline-centered > .timeline-item:nth-child(even) .timeline-info {
-    float: right;
-    text-align: left;
-    padding-left: 30px;
-  }
-  .timeline-centered > .timeline-item:nth-child(even) .timeline-content {
-    float: left;
-    text-align: right;
-    padding-right: 30px;
-  }
-  .timeline-centered > .timeline-item.period .timeline-content {
-    float: none;
-    padding: 0;
-    width: 100%;
-    text-align: center;
-  }
-  .timeline-centered .timeline-item.period {
-    padding: 50px 0 90px;
-  }
-  .timeline-centered .period .timeline-marker:after {
-    height: 30px;
-    bottom: 0;
-    top: auto;
-  }
-  .timeline-centered .period .timeline-title {
-    left: auto;
-  }
-  /* path { pointer-events: visibleFill	} */
+.center {
+  text-align: center;
 }
+.title-header {
+    font-size: 30px;
+    margin-bottom: 30px;
+  }
 
+/* ---------------------------------------------
+    @media only screen - MOBILE
+----------------------------------------------*/
 @media only screen 
   and (min-device-width: 320px) 
   and (max-device-width: 480px)
@@ -474,6 +280,7 @@ a:hover {
   .map-title {
     text-align: center;
   }
+
 }
 
 /*----------------------------------------------
@@ -519,107 +326,32 @@ a:hover {
           <p class="note">Note: Nullam vel sem. Nullam vel sem. Integer ante arcu, accumsan a, consectetuer eget, posuere ut, mauris. Donec orci lectus, aliquam ut, faucibus non, euismod id, nulla. Donec vitae sapien ut libero venenatis faucibus. ullam dictum felis
             eu pede mollis pretium. Pellentesque ut neque.</p>
         </div>
+
+        <!-- 
+          --------------Adherence beginning ---------------
+        -->
         <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 mb-5">
-          <h4>Aktivne terapije</h4>
-          <div class="table-responsive">
-          <table class="table table-striped">
-            <thead class="green-table">
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+          <h4 id="adherenceHeader" class="title-header"> </h4>
+          <div id="adhTable" class="table-responsive">
+      
+          </div>
+
 
         <div class="diagram">
-          <canvas id="chart_1" width="400" height="400"></canvas>
+          <canvas id="adherenceChart"></canvas>
         </div>
         
 
         </div>
+               <!-- 
+          --------------Adherence END  ---------------
+        -->
 
-        <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 mb-5">
-          <h4>Iskorišćenost terapije</h4>
-          <div class="table-responsive">
-          <table class="table table-striped">
-            <thead class="green-table">
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="diagram">
-          <canvas id="chart_2" width="400" height="400"></canvas>
-        </div>
-        
-
-        </div>
+                       <!-- 
+          --------------MAPA TELA BEGINNING  ---------------
+        -->
         <div class="col-xs-12 col-sm-8 col-sm-offset-2 mb-5">
-          <h4 class="map-title">Izveštaj o apliciranju subkutan injekcijske terapije</h4>
+          <h4 class="title-header">Injection map</h4>
         <div>
 
           <div class="">
@@ -1208,111 +940,46 @@ a:hover {
           </g>
           </svg>
           
-          
-          
         </div>
 
         </div>
+
+        <!-- 
+          --------------MAPA TELA END  ---------------
+        -->
+
+       <!-- 
+          --------------Indicators BEGINNING  ---------------
+        -->
 
         <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 mb-5">
-          <h4>Šećer u krvi (mmol/l)</h4>
-          <div class="table-responsive">
-          <table class="table table-striped">
-            <thead class="green-table">
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
-            </tbody>
-          </table>
+          <h4 class="title-header">Indicators</h4>
+          <div id="indicators">
+
+          </div>
+        </div>
+
+       <!-- 
+          --------------Indicators END  ---------------
+        -->
+
+        <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 mb-5">
+          <h4 class="title-header" id="pressureHead"></h4>
+          <div class="table-responsive" id="bloodTable">
+
         </div>
 
         <div class="diagram">
-          <canvas id="chart_3" width="400" height="400"></canvas>
+          <canvas id="bloodChart" width="400" height="400"></canvas>
         </div>
         
 
         </div>
 
-        <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 mb-5">
-          <h4>Iskorišćenost terapije</h4>
-          <div class="table-responsive">
-          <table class="table table-striped">
-            <thead class="green-table">
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
 
-        <div class="diagram">
-          <canvas id="chart_4" width="400" height="400"></canvas>
-        </div>
-        
 
-        </div>
+
+
     </div>
 </div>
 
@@ -1357,318 +1024,1286 @@ a:hover {
 </div>
 
 <script>
-  var ctx_1 = document.getElementById('chart_1');
-  var chart_1 = new Chart(ctx_1, {
-      type: 'line',
-      data: {
-          labels: ['2016-3-25', '2016-4-25', '2016-5-25', '2016-6-25', '2016-7-25', '2016-8-25'],
-          datasets: [
-            {
-              label: 'Oligovit',
-              data: [1,1,1,1,1,1],
-              backgroundColor: [
-                  'rgba(255, 99, 132, 0.2)',                 
-              ],
-              borderColor: [                 
-              'rgb(54, 162, 235)',                
-              ],
-              borderWidth: 1
-          },
-          {
-            label: 'Palitrex',
-              data: [2,2,2,2,2,2],
-              backgroundColor: [                
-                  'rgba(255, 206, 86, 0.2)',                
-              ],
-              borderColor: [
-              'rgb(255, 99, 132)',                
-              ],
-              borderWidth: 1
-          }
-        ]
-      },
-      options: {
-        spanGaps: true,
-        responsive: true,
-        plugins: {
-          legend: {
-            position: 'top',
-          },
-          title: {
-            display: true,
-            text: 'Chart.js Line Chart'
-          }
+  ///////////////////////////////////////
+  // Adherence
+  ///////////////////////////////////////
+
+  var json = 
+  {
+  "Adherence": [
+    {
+      "Medication name": "Lexilium®",
+      "Date from": "2021-02-10",
+      "Date to": "2021-04-10",
+      "Amount of medications taken": 56,
+      "The amount of medication not taken": 0,
+      "Not taken in Archived therapy": 0,
+      "Percentage utilization of therapy": "100.00%",
+      "Total delay": "13h 12m 6s",
+      "Average delay": "14m 9s",
+      "As needed": "No",
+      "As needed indicator": 0
+    },
+    {
+      "Medication name": "Moxogamma® 0.2",
+      "Date from": "2021-02-10",
+      "Date to": "2021-04-10",
+      "Amount of medications taken": 56,
+      "The amount of medication not taken": 0,
+      "Not taken in Archived therapy": 0,
+      "Percentage utilization of therapy": "100.00%",
+      "Total delay": "12h 14m ",
+      "Average delay": "13m 6s",
+      "As needed": "No",
+      "As needed indicator": 0
+    },
+    {
+      "Medication name": "Nolpaza®",
+      "Date from": "2021-02-10",
+      "Date to": "2021-04-10",
+      "Amount of medications taken": 56,
+      "The amount of medication not taken": 0,
+      "Not taken in Archived therapy": 0,
+      "Percentage utilization of therapy": "100.00%",
+      "Total delay": "9h 57m 3s",
+      "Average delay": "10m 40s",
+      "As needed": "No",
+      "As needed indicator": 0
+    },
+    {
+      "Medication name": "Betaseron",
+      "Date from": "2021-02-10",
+      "Date to": "2021-03-08",
+      "Amount of medications taken": 24,
+      "The amount of medication not taken": 0,
+      "Not taken in Archived therapy": 0,
+      "Percentage utilization of therapy": "100.00%",
+      "Total delay": "3h 8m 55s",
+      "Average delay": "7m 52s",
+      "As needed": "No",
+      "As needed indicator": 0
+    },
+    {
+      "Medication name": "Ibuprofen",
+      "Date from": "2021-03-04",
+      "Date to": "2021-03-04",
+      "Amount of medications taken": 1,
+      "The amount of medication not taken": 0,
+      "Not taken in Archived therapy": 0,
+      "Percentage utilization of therapy": "100.00%",
+      "Total delay": "No delay",
+      "Average delay": "No delay",
+      "As needed": "Yes",
+      "As needed indicator": 1
+    },
+    {
+      "Medication name": "Ibuprofen",
+      "Date from": "2021-03-12",
+      "Date to": "2021-03-22",
+      "Amount of medications taken": 2,
+      "The amount of medication not taken": 0,
+      "Not taken in Archived therapy": 0,
+      "Percentage utilization of therapy": "100.00%",
+      "Total delay": "No delay",
+      "Average delay": "No delay",
+      "As needed": "Yes",
+      "As needed indicator": 1
+    },
+    {
+      "Medication name": "Betaseron",
+      "Date from": "2021-03-12",
+      "Date to": "2021-04-29",
+      "Amount of medications taken": 23,
+      "The amount of medication not taken": 14,
+      "Not taken in Archived therapy": 11,
+      "Percentage utilization of therapy": "88.46%",
+      "Total delay": "5h 30m 53s",
+      "Average delay": "8m 57s",
+      "As needed": "No",
+      "As needed indicator": 0
+    },
+    {
+      "Medication name": "Ibuprofen",
+      "Date from": "2021-03-15",
+      "Date to": "2021-03-15",
+      "Amount of medications taken": 1,
+      "The amount of medication not taken": 0,
+      "Not taken in Archived therapy": 0,
+      "Percentage utilization of therapy": "100.00%",
+      "Total delay": "No delay",
+      "Average delay": "No delay",
+      "As needed": "Yes",
+      "As needed indicator": 1
+    },
+    {
+      "Medication name": "Aspirin®",
+      "Date from": "2021-04-05",
+      "Date to": "2021-04-13",
+      "Amount of medications taken": 0,
+      "The amount of medication not taken": 6,
+      "Not taken in Archived therapy": 6,
+      "Percentage utilization of therapy": "0.00%",
+      "Total delay": "No delay",
+      "Average delay": "No delay",
+      "As needed": "No",
+      "As needed indicator": 0
+    },
+    {
+      "Medication name": "Brufen®",
+      "Date from": "2021-04-05",
+      "Date to": "2021-04-09",
+      "Amount of medications taken": 0,
+      "The amount of medication not taken": 8,
+      "Not taken in Archived therapy": 8,
+      "Percentage utilization of therapy": "0.00%",
+      "Total delay": "No delay",
+      "Average delay": "No delay",
+      "As needed": "No",
+      "As needed indicator": 0
+    },
+    {
+      "Medication name": "ASPIRIN",
+      "Date from": "2021-04-24",
+      "Date to": "2021-04-30",
+      "Amount of medications taken": 1,
+      "The amount of medication not taken": 6,
+      "Not taken in Archived therapy": 6,
+      "Percentage utilization of therapy": "100.00%",
+      "Total delay": "3s",
+      "Average delay": "No delay",
+      "As needed": "No",
+      "As needed indicator": 0
+    }
+  ],
+  "graph_range": [
+    {
+      "Min date": "2021-02-01",
+      "Max date": "2021-04-30"
+    }
+  ],
+  "Indicators": [
+    {
+      "Pulse & Heart Rate(otkucaj/min)": [
+        {
+          "Max value": 90,
+          "Min value": 60,
+          "Date and Time": "2021-02-08 11:10 pm",
+          "Value": "66.00"
         },
-        scales: {
-          x: [{
-            display: true,
-            scaleLabel: {
-              display: true,
-              labelString: 'Month'
+        {
+          "Max value": 90,
+          "Min value": 60,
+          "Date and Time": "2021-02-09 10:43 am",
+          "Value": "74.00"
+        },
+        {
+          "Max value": 90,
+          "Min value": 60,
+          "Date and Time": "2021-02-09 1:50 pm",
+          "Value": "71.00"
+        },
+        {
+          "Max value": 90,
+          "Min value": 60,
+          "Date and Time": "2021-02-09 11:28 pm",
+          "Value": "79.00"
+        },
+        {
+          "Max value": 90,
+          "Min value": 60,
+          "Date and Time": "2021-02-10 12:19 am",
+          "Value": "86.00"
+        },
+        {
+          "Max value": 90,
+          "Min value": 60,
+          "Date and Time": "2021-02-10 12:19 am",
+          "Value": "100.00"
+        },
+        {
+          "Max value": 90,
+          "Min value": 60,
+          "Date and Time": "2021-02-10 12:45 am",
+          "Value": "77.00"
+        },
+        {
+          "Max value": 90,
+          "Min value": 60,
+          "Date and Time": "2021-02-10 12:58 pm",
+          "Value": "66.00"
+        },
+        {
+          "Max value": 90,
+          "Min value": 60,
+          "Date and Time": "2021-02-12 1:45 am",
+          "Value": "66.00"
+        },
+        {
+          "Max value": 90,
+          "Min value": 60,
+          "Date and Time": "2021-03-12 1:47 am",
+          "Value": "69.00"
+        },
+        {
+          "Max value": 90,
+          "Min value": 60,
+          "Date and Time": "2021-03-12 1:55 am",
+          "Value": "61.00"
+        },
+        {
+          "Max value": 90,
+          "Min value": 60,
+          "Date and Time": "2021-03-12 10:00 am",
+          "Value": "71.00"
+        },
+        {
+          "Max value": 90,
+          "Min value": 60,
+          "Date and Time": "2021-03-12 10:36 pm",
+          "Value": "77.00"
+        },
+        {
+          "Max value": 90,
+          "Min value": 60,
+          "Date and Time": "2021-03-15 10:16 pm",
+          "Value": "93.00"
+        },
+        {
+          "Max value": 90,
+          "Min value": 60,
+          "Date and Time": "2021-03-15 10:17 pm",
+          "Value": "87.00"
+        },
+        {
+          "Max value": 90,
+          "Min value": 60,
+          "Date and Time": "2021-03-16 1:52 pm",
+          "Value": "74.00"
+        },
+        {
+          "Max value": 90,
+          "Min value": 60,
+          "Date and Time": "2021-04-03 10:34 pm",
+          "Value": "73.00"
+        },
+        {
+          "Max value": 90,
+          "Min value": 60,
+          "Date and Time": "2021-04-08 1:23 am",
+          "Value": "60.00"
+        },
+        {
+          "Max value": 90,
+          "Min value": 60,
+          "Date and Time": "2021-04-19 9:31 pm",
+          "Value": "70.00"
+        },
+        {
+          "Max value": 90,
+          "Min value": 60,
+          "Date and Time": "2021-04-20 5:47 pm",
+          "Value": "72.00"
+        },
+        {
+          "Max value": 90,
+          "Min value": 60,
+          "Date and Time": "2021-04-22 10:08 am",
+          "Value": "84.00"
+        },
+        {
+          "Max value": 90,
+          "Min value": 60,
+          "Date and Time": "2021-04-22 9:47 pm",
+          "Value": "63.00"
+        },
+        {
+          "Max value": 90,
+          "Min value": 60,
+          "Date and Time": "2021-04-22 11:21 pm",
+          "Value": "63.00"
+        },
+        {
+          "Max value": 90,
+          "Min value": 60,
+          "Date and Time": "2021-04-24 7:52 am",
+          "Value": "69.00"
+        },
+        {
+          "Max value": 90,
+          "Min value": 60,
+          "Date and Time": "2021-04-26 11:08 pm",
+          "Value": "59.00"
+        }
+      ]
+    },
+    {
+      "Height(cm)": [
+        {
+          "Max value": 0,
+          "Min value": 0,
+          "Date and Time": "2021-03-14 10:41 pm",
+          "Value": "177.00"
+        }
+      ]
+    },
+    {
+      "SpO2 oxygen saturation(%)": [
+        {
+          "Max value": 100,
+          "Min value": 97,
+          "Date and Time": "2021-02-08 11:10 pm",
+          "Value": "99.00"
+        },
+        {
+          "Max value": 100,
+          "Min value": 97,
+          "Date and Time": "2021-02-09 10:43 am",
+          "Value": "99.00"
+        },
+        {
+          "Max value": 100,
+          "Min value": 97,
+          "Date and Time": "2021-02-09 1:50 pm",
+          "Value": "97.00"
+        },
+        {
+          "Max value": 100,
+          "Min value": 97,
+          "Date and Time": "2021-02-09 1:50 pm",
+          "Value": "98.00"
+        },
+        {
+          "Max value": 100,
+          "Min value": 97,
+          "Date and Time": "2021-02-09 1:51 pm",
+          "Value": "99.00"
+        },
+        {
+          "Max value": 100,
+          "Min value": 97,
+          "Date and Time": "2021-02-09 11:28 pm",
+          "Value": "98.00"
+        },
+        {
+          "Max value": 100,
+          "Min value": 97,
+          "Date and Time": "2021-02-10 12:19 am",
+          "Value": "98.00"
+        },
+        {
+          "Max value": 100,
+          "Min value": 97,
+          "Date and Time": "2021-02-10 12:20 am",
+          "Value": "100.00"
+        },
+        {
+          "Max value": 100,
+          "Min value": 97,
+          "Date and Time": "2021-02-10 12:45 am",
+          "Value": "98.00"
+        },
+        {
+          "Max value": 100,
+          "Min value": 97,
+          "Date and Time": "2021-02-10 12:58 pm",
+          "Value": "99.00"
+        },
+        {
+          "Max value": 100,
+          "Min value": 97,
+          "Date and Time": "2021-02-12 1:46 am",
+          "Value": "99.00"
+        },
+        {
+          "Max value": 100,
+          "Min value": 97,
+          "Date and Time": "2021-02-12 1:48 am",
+          "Value": "99.00"
+        },
+        {
+          "Max value": 100,
+          "Min value": 97,
+          "Date and Time": "2021-03-12 1:47 am",
+          "Value": "99.00"
+        },
+        {
+          "Max value": 100,
+          "Min value": 97,
+          "Date and Time": "2021-03-12 1:54 am",
+          "Value": "97.00"
+        },
+        {
+          "Max value": 100,
+          "Min value": 97,
+          "Date and Time": "2021-03-12 10:00 am",
+          "Value": "99.00"
+        },
+        {
+          "Max value": 100,
+          "Min value": 97,
+          "Date and Time": "2021-03-12 10:36 pm",
+          "Value": "98.00"
+        },
+        {
+          "Max value": 100,
+          "Min value": 97,
+          "Date and Time": "2021-03-15 10:16 pm",
+          "Value": "98.00"
+        },
+        {
+          "Max value": 100,
+          "Min value": 97,
+          "Date and Time": "2021-03-15 10:17 pm",
+          "Value": "100.00"
+        },
+        {
+          "Max value": 100,
+          "Min value": 97,
+          "Date and Time": "2021-03-16 1:52 pm",
+          "Value": "99.00"
+        },
+        {
+          "Max value": 100,
+          "Min value": 97,
+          "Date and Time": "2021-04-03 10:35 pm",
+          "Value": "99.00"
+        },
+        {
+          "Max value": 100,
+          "Min value": 97,
+          "Date and Time": "2021-04-08 1:23 am",
+          "Value": "99.00"
+        },
+        {
+          "Max value": 100,
+          "Min value": 97,
+          "Date and Time": "2021-04-22 9:47 pm",
+          "Value": "100.00"
+        }
+      ]
+    }
+  ],
+  "Blood Pressure(mmHg)": [
+    {
+      "Max value Systolic": 138,
+      "Min value Systolic": 110,
+      "Max value Diastolic": 90,
+      "Min value Diastolic": 60,
+      "Date and Time": "2021-02-08 11:07 pm",
+      "Value Systolic": "120.00",
+      "Value Diastolic": "80.00"
+    },
+    {
+      "Max value Systolic": 138,
+      "Min value Systolic": 110,
+      "Max value Diastolic": 90,
+      "Min value Diastolic": 60,
+      "Date and Time": "2021-02-09 10:42 am",
+      "Value Systolic": "117.00",
+      "Value Diastolic": "78.00"
+    },
+    {
+      "Max value Systolic": 138,
+      "Min value Systolic": 110,
+      "Max value Diastolic": 90,
+      "Min value Diastolic": 60,
+      "Date and Time": "2021-03-12 2:52 am",
+      "Value Systolic": "122.00",
+      "Value Diastolic": "80.00"
+    },
+    {
+      "Max value Systolic": 138,
+      "Min value Systolic": 110,
+      "Max value Diastolic": 90,
+      "Min value Diastolic": 60,
+      "Date and Time": "2021-03-12 1:04 pm",
+      "Value Systolic": "117.00",
+      "Value Diastolic": "78.00"
+    },
+    {
+      "Max value Systolic": 138,
+      "Min value Systolic": 110,
+      "Max value Diastolic": 90,
+      "Min value Diastolic": 60,
+      "Date and Time": "2021-04-22 10:08 am",
+      "Value Systolic": "114.00",
+      "Value Diastolic": "71.00"
+    },
+    {
+      "Max value Systolic": 138,
+      "Min value Systolic": 110,
+      "Max value Diastolic": 90,
+      "Min value Diastolic": 60,
+      "Date and Time": "2021-04-22 11:21 pm",
+      "Value Systolic": "115.00",
+      "Value Diastolic": "83.00"
+    },
+    {
+      "Max value Systolic": 138,
+      "Min value Systolic": 110,
+      "Max value Diastolic": 90,
+      "Min value Diastolic": 60,
+      "Date and Time": "2021-04-24 7:52 am",
+      "Value Systolic": "115.00",
+      "Value Diastolic": "79.00"
+    },
+    {
+      "Max value Systolic": 138,
+      "Min value Systolic": 110,
+      "Max value Diastolic": 90,
+      "Min value Diastolic": 60,
+      "Date and Time": "2021-04-26 11:08 pm",
+      "Value Systolic": "117.00",
+      "Value Diastolic": "70.00"
+    }
+  ]
+}
+
+
+
+
+
+
+//console.log (new Date('2011-04-12'.replace(/-/g, "/")));
+
+  var timeFormat = 'YYYY-MM-DD';
+  function newDate(days) {
+    return moment().add(days, 'd');
+  }
+
+
+  var col = [];
+
+  var dateFormattedD ;
+  var adherence = Object.keys(json)[0];
+  console.log(adherence);
+  var adherenceHeader = document.getElementById("adherenceHeader");
+  adherenceHeader.innerHTML = adherence;
+
+  var hh1 = Object.entries(json).map(item => item[1]);
+  var hh = hh1[0];
+  console.log(hh1);
+  console.log(hh);
+
+  for (var i = 0; i < hh.length; i++) {
+      for (var key in hh[i]) {
+          if (col.indexOf(key) === -1 ) {
+              col.push(key);
+          }
+      }
+  }
+
+  // CREATE DYNAMIC TABLE.
+  var table = document.createElement("table");
+  $(table).addClass( 'table table-striped' );
+  var tHead = document.createElement("thead");    // TABLE thead.
+  $(tHead).addClass( 'green-table' );
+  table.appendChild(tHead);
+  // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
+
+  var tr = tHead.insertRow(-1);                   // TABLE ROW.
+
+  for (var i = 0; i < 10; i++) {  
+    var th = document.createElement("th"); 
+    $(th).addClass( 'col' );     // TABLE HEADER.
+    th.innerHTML = col[i];
+    tr.appendChild(th);
+                 
+  }
+
+  var tBody = document.createElement("tbody");    // TABLE ROW.
+  table.appendChild(tBody);
+
+  // ADD JSON DATA TO THE TABLE AS ROWS.
+  for (var i = 0; i < hh.length; i++) {
+          
+    tr = tBody.insertRow(-1);
+      //  tr = table.insertRow(-1);
+
+    for (var j = 0; j < 10; j++) {
+      var aa = col[3];
+
+
+        var tabCell = tr.insertCell(-1);
+
+        tabCell.innerHTML = hh[i][col[j]];
+       
+            
+    }
+
+  }
+
+  // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
+  var divContainer = document.getElementById("adhTable");
+  divContainer.innerHTML = "";
+  divContainer.appendChild(table);
+
+  // $('#adhTable td:nth-child(4)').addClass('right');
+
+   $('#adhTable td:nth-child(2)').addClass('center');
+   $('#adhTable td:nth-child(3)').addClass('center');
+   $('#adhTable td:nth-child(4)').addClass('center');
+   $('#adhTable td:nth-child(5)').addClass('center');
+   $('#adhTable td:nth-child(6)').addClass('center');
+   $('#adhTable td:nth-child(7)').addClass('center');
+   $('#adhTable td:nth-child(8)').addClass('center');
+   $('#adhTable td:nth-child(9)').addClass('center');
+   $('#adhTable td:nth-child(10)').addClass('center');
+
+
+
+  // $('#adhTable td:nth-child(5)').addClass('right');
+  // $('#adhTable td:nth-child(6)').addClass('right');
+  // $('#adhTable td:nth-child(7)').addClass('right');
+  // $('#adhTable td:nth-child(8)').addClass('right');
+  // $('#adhTable td:nth-child(9)').addClass('right');
+ 
+  // $('#adhTable th:nth-child(4)').addClass('right');
+  
+   $('#adhTable th:nth-child(2)').addClass('center');
+   $('#adhTable th:nth-child(3)').addClass('center');
+   $('#adhTable th:nth-child(4)').addClass('center');
+   $('#adhTable th:nth-child(5)').addClass('center');
+   $('#adhTable th:nth-child(6)').addClass('center');
+   $('#adhTable th:nth-child(7)').addClass('center');
+   $('#adhTable th:nth-child(8)').addClass('center');
+   $('#adhTable th:nth-child(9)').addClass('center');
+   $('#adhTable th:nth-child(10)').addClass('center');
+
+
+
+  // $('#adhTable th:nth-child(5)').addClass('right');
+  // $('#adhTable th:nth-child(6)').addClass('right');
+  // $('#adhTable th:nth-child(7)').addClass('right');
+  // $('#adhTable th:nth-child(8)').addClass('right');
+  // $('#adhTable th:nth-child(9)').addClass('right');
+
+
+  var lekovi = [];
+  var dRange = [];
+
+  var colors = [ "#687ae8","#12bfbb","#ffb058","#2991cf","#87b8d4","#109693","#f29494","#527cf9","#7140d1","#e79e4e","#52b4ee",
+    "#6ed7e0","#8fa6b4","#ffcfcf","#28304e","#95aac9",
+    "#f2545b","#f7bc06","#00cc99","#19b5fe","#E3EBF6"
+  ];
+
+  for (var i = 0; i < hh.length; i++) {
+    var ff = hh[i]['As needed indicator'];
+    var nazivLekaKey = Object.keys(hh[0])[0];
+    var datumOdkey = Object.keys(hh[0])[1];
+    var datumDokey = Object.keys(hh[0])[2];
+
+    console.log(datumDokey);
+    if (ff === 0) {
+      var medic = [hh[i][nazivLekaKey]];
+      console.log(medic);
+      lekovi.push(medic);
+      var dateRange = [new Date(hh[i][datumOdkey].replace(/-/g, "/")), new Date(hh[i][datumDokey].replace(/-/g, "/")) ];
+     
+      dRange.push(dateRange);
+      //console.log(dRange)
+    } else {
+      //return;
+    }
+    var rowData = {};
+  }
+
+  // ------------------------------------------
+  //  Adherence Chart
+  // ------------------------------------------
+
+  var gg = json;
+  //console.log(gg);
+
+  var adhChart =  {
+      type: 'horizontalBar',
+      data: {
+          labels: lekovi,
+          datasets: [
+            {
+              data: dRange,
+              backgroundColor: colors,
+              borderWidth: 1
             }
-          }],
-          y: [{
-            suggestedMin: 1,
-            suggestedMax: 5,
-            title: {
-              display: true,
-              text: 'Your Title'
-            },
-            display: true,
-            scaleLabel: {
-              display: true,
-              labelString: 'Value'
-          },
-         ticks: {
-           min: 0,
-           max: 5,
-           stepSize: 1,
-           suggestedMin: 0.5,
-           suggestedMax: 5.5,
-           callback: function(label, index, labels) {
-             switch (label) {
-               case 0:
-                 return 'ZERO';
-               case 1:
-                 return 'ONE';
-               case 2:
-                 return 'TWO';
-               case 3:
-                 return 'THREE';
-               case 4:
-                 return 'FOUR';
-               case 5:
-                 return 'FIVE';
-             }
-           }
-         },
-         gridLines: {
-           display: false
-         }
-       }]
-        }
-      },
-  });
-
-  var ctx_2 = document.getElementById('chart_2');
-  var chart_2 = new Chart(ctx_2, {
-      type:  'bar',
-      data: {
-          labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-          datasets: [
-            {
-              label: 'slika',
-              data: [[3, 5], [2, 10], [1, 3], [4, 1], [4, 8]],
-              backgroundColor: [
-              'rgba(54, 162, 235, 0.2)',
-                  
-              ],
-              borderColor: [
-                 
-              'rgb(54, 162, 235)',
-                 
-              ],
-              borderWidth: 1
-          },
-          {
-            label: 'ton',
-              data: [5, 14, 10, 8, 8, 2],
-              backgroundColor: [
-                 
-              'rgba(255, 99, 132, 0.2)',
-                
-              ],
-              borderColor: [
-              'rgb(255, 99, 132)',
-              ],
-              borderWidth: 1
-          }
-        ]
+          ]
       },
       options: {
-        spanGaps: true,
-        responsive: true,
-        plugins: {
           legend: {
-            position: 'top',
+              display: false,
           },
-          title: {
-            display: true,
-            text: 'Chart.js Line Chart'
-          }
-        }
-      },
-  });
+          responsive: true,
+          scales: {
+            xAxes: [{
+                type: 'time',
+                time: {
+                         format: timeFormat,
+                         tooltipFormat: 'MM/DD',
+                        displayFormats: {
+                            day: 'MMM DD'
+                        },
+                    },
+                scaleLabel: {
+                        //display:     true,
+                        labelString: 'Date'
+                    },
+                ticks: {            
+                    min: json.graph_range[0]['Min date'], 
+                    max: json.graph_range[0]['Max date'], 
+                  }
+            }]
+          },
+          tooltips: {
+              callbacks: {
+                label: function(tooltipItem, data) {
+                    var tt =  data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+                    var dateFrom = moment(tt[0]).format('LL');
+                    var dateTo = moment(tt[1]).format('LL');
+                    var rr = [dateFrom,dateTo ]
+                    //return data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
+                      return rr;
+                  },
 
-  var ctx_3 = document.getElementById('chart_3');
-  var chart_3 = new Chart(ctx_3, {
-      type: 'line',
-      data: {
-          labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-          datasets: [
-            {
-              label: 'slika',
-              data: [null, 19, 3, 5, 2, 3],
-              backgroundColor: [
-                  'rgba(255, 99, 132, 0.2)',                 
-              ],
-              borderColor: [                 
-                  'rgba(54, 162, 235, 1)',                 
-              ],
-              borderWidth: 1
+              }
           },
-          {
-            label: 'ton',
-              data: [5, 14, 10, null, 8, 2],
-              backgroundColor: [                
-                  'rgba(255, 206, 86, 0.2)',                
-              ],
-              borderColor: [
-                  'rgba(153, 102, 255, 1)',                 
-              ],
-              borderWidth: 1
-          }
-        ]
-      },
-      options: {
-        spanGaps: true,
-        responsive: true,
-        plugins: {
-          legend: {
-            position: 'top',
-          },
-          title: {
-            display: true,
-            text: 'Chart.js Line Chart'
-          }
-        }
-      },
-  });
+      }
+      };
 
-  var ctx_4 = document.getElementById('chart_4');
-  var chart_4 = new Chart(ctx_4, {
-      type: 'line',
-      data: {
-          labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-          datasets: [
-            {
-              label: 'slika',
-              data: [null, 19, 3, 5, 2, 3],
-              backgroundColor: [
-                  'rgba(255, 99, 132, 0.2)',                 
-              ],
-              borderColor: [                 
-                  'rgba(54, 162, 235, 1)',                 
-              ],
-              borderWidth: 1
-          },
-          {
-            label: 'ton',
-              data: [5, 14, 10, null, 8, 2],
-              backgroundColor: [                
-                  'rgba(255, 206, 86, 0.2)',                
-              ],
-              borderColor: [
-                  'rgba(153, 102, 255, 1)',                 
-              ],
-              borderWidth: 1
-          }
-        ]
-      },
-      options: {
-        spanGaps: true,
-        responsive: true,
-        plugins: {
-          legend: {
-            position: 'top',
-          },
-          title: {
-            display: true,
-            text: 'Chart.js Line Chart'
-          }
-        }
-      },
-  });
+      window.onload = function () {
+        var ctx       = document.getElementById("adherenceChart").getContext("2d");
+
+        window.myBar = new Chart(ctx, adhChart);
+        
+    };
+    //console.log(adhChart);
+
+
+
 </script>
 
 <script>
 
-// var clicked_id;
-// var id;
-// function tooltip(text, id) {
-//   if (clicked_id) {
-//     document.getElementById(clicked_id).classList.remove("focus");
-//   }
+  // --------------------------------------------------
+  //  INDICATORS
+  //---------------------------------------------------
 
-//   clicked_id = id;
-//   document.getElementById(id).classList.add("focus");
-  
-//   var offsetDistance = 20;
+  //  INDICATORS  TABLE
 
-//   tt = document.getElementById('ttdiv');
-//   el = document.getElementById('inject');
-//   tt_body = document.getElementById('tt-body');
+  var indicators = json.Indicators;
+  //console.log(indicators);
 
-//   var viewport = window.visualViewport;
-//   //console.log(viewport.scale);
-//   function resizeHandler() {
-//     if (viewport.scale > 1.25 && viewport.scale < 1.65) {
-//       tt.style.top = '27px';
-//       tt.style.width = '310px';
+  var colPulse =[];
+
+    var divIndicators, divEl;
+
+  for (var i = 0; i < indicators.length; i++) {
+
+    //console.log(indicators[i]);
+
+    var keys = Object.keys(indicators[i]);
+
+    var indObjects = indicators[i][keys];
+
+    divIndicators = document.getElementById("indicators");
+    divEl = document.createElement("div");
+    divIndicators.appendChild(divEl);
+    var header1 = document.createElement("h4");
+    $(header1).addClass("map-title");
+    header1.innerHTML = keys;
+    divEl.appendChild(header1);
+
+    
+      // CREATE DYNAMIC TABLE.
+      var table1 = document.createElement("table");
+
+      $(table1).addClass( 'table table-striped' );
+      divEl.appendChild(table1);
+      var tHead1 = document.createElement("thead");    // TABLE thead.
+      $(tHead1).addClass( 'green-table' );
+      table1.appendChild(tHead1);
+
+      //console.log(indObjects);
+      var tabHead = Object.keys(indObjects[0]);
+      //console.log(tabHead);
+      var tr1 = tHead1.insertRow(-1);
+      var colHead = [];
+
+      for (var h = 0; h < tabHead.length; h++) {
+        var tHead = tabHead[h];
+        var th = document.createElement("th"); 
+        $(th).addClass( 'col' );     // TABLE HEADER.
+        th.innerHTML = tabHead[h];
+        tr1.appendChild(th);
+        //console.log(th);
+        //console.log(tr1);
+      }
+
+      //console.log(tr1);
+      // tr1.appendChild(th1);
+      tHead1.appendChild(tr1);
+
+      var tBody1 = document.createElement("tbody");    // TABLE ROW.
+      table1.appendChild(tBody1);
+
+    var dataChart = [];
+    var maxVrednost, minVrednost,  vrednost = Number;
+    var datum;
+    
+    var data0 = [];
+
+    var maxVrednosti = [];
+    var minVrednosti = [];
+    var vrednosti = [];
+
+    var datasetsMax =[];
+    var datasetsMin = [];
+    var datasetsVred = [];
+
+    var sviDatumi =[];
+
+     
+    
+
+    for (var j = 0; j < indObjects.length; j++) {
+
+      //console.log(indObjects[j]);
       
-//       el.style.width = '60px';
-//       el.style.height= '60px';
-//       el.style.borderRadius= '20px';
-//       tt_body.style.fontSize= '12px';
-//     }
-//     else if (viewport.scale > 1.65  ) {
-//       tt.style.top = '70px';
-//       tt.style.width = '220px';
-//       tt.style.minHeight = '108px';
-//       tt.style.borderRadius = '24px';
+
+      //var aa = indObjects[j][key];
+      var lbl0 = Object.keys(indObjects[j])[0];
+      var lbl1 = Object.keys(indObjects[j])[1];
+      var lbl2 = Object.keys(indObjects[j])[3];
+      // var lbl3 = Object.keys(indObjects[j])[3];
+
       
-//       el.style.width = '40px';
-//       el.style.height= '40px';
-//       el.style.borderRadius= '10px';
-//       el.style.padding= '8px';
+     maxVrednost = Object.values(indObjects[0])[0];
+     //console.log(maxVrednost);
+     //minVrednost = Object.values(indObjects[j])[1];
+     minVrednost = Object.values(indObjects[0])[1];
 
-//       tt_body.style.fontSize= '7px';
-//       tt_body.style.lineHeight= '8px';
+     vrednost = Object.values(indObjects[j])[3];
+     var vredInt = parseFloat(vrednost);
 
-//     }  else {
-//     }
-//   }
+    // { x: new Date(json.graph_range[0]['Min date']), y: 138,},
+    // { x: new Date(json.graph_range[0]['Max date']), y: 138}
 
-//   window.visualViewport.addEventListener('resize', resizeHandler);
+     datum = new Date(Object.values(indObjects[j])[2].replace(/-/g, "/"));
 
-//   tt.style.display = 'block';
+      var array = ['x', 'y'];
+      //  var objMax = {
+      //        [array[0]]: datum,
+      //        [array[1]]: maxVrednost,
+      //    };
+      var objMax = 
+             [{[array[0]]: new Date(json.graph_range[0]['Max date']),
+             [array[1]]: maxVrednost},
+             {[array[0]]: new Date(json.graph_range[0]['Min date']),
+             [array[1]]: maxVrednost,}]
+         ;
+        // console.log(objMax);
 
-//   document.getElementById("tt-body").innerHTML = text;
-//   //tt.innerHTML = text;
-//   //document.getElementById("ap1").innerHTML = a + ': ' +
-//   //"<span>" +
-//   //  b +
-//    // "</span>";
-  
-// }
 
-// function hide() {
-  
-//   tt = document.getElementById('ttdiv');
-//   tt.style.display = 'none';
-//   document.getElementById(clicked_id).classList.remove("focus");
-  
-// }  
+      // var objMin = {
+      //       [array[0]]: datum,
+      //       [array[1]]: minVrednost,
+      // };
+      var objMin = 
+            [{[array[0]]: new Date(json.graph_range[0]['Max date']),
+             [array[1]]: minVrednost},
+             {[array[0]]: new Date(json.graph_range[0]['Min date']),
+             [array[1]]: minVrednost,}];
+      var objVred = {
+            [array[0]]: datum,
+            [array[1]]: vredInt,
+      };
 
-// $(document).ready(function () {
-//     $("a").tooltip({
-//       'placement': 'bottom'
-//     }); // this works
+      maxVrednosti.push(objMax);
+      minVrednosti.push(objMin);
+      vrednosti.push(objVred);
 
-//     // $("my_circle").tooltip({
-//     //   'placement': 'bottom'
-//     // }); // this does not work
-// });
+      sviDatumi.push(datum);
+
+      tr1 = tBody1.insertRow(-1);
+      for (var k = 0; k < tabHead.length; k++) { 
+        var tabCell1 = tr1.insertCell(-1);
+        //console.log(tabCell1);
+
+       tabCell1.innerHTML = indObjects[j][tabHead[k]];
+
+
+      }
+    }
+
+
+    var datasetMax = {
+      label: lbl0,
+      data: objMax,
+      fill: false,
+      borderColor: '#FF4949',
+      backgroundColor: '#FF4949'
+    };
+    var datasetMin = {
+      label: lbl1,
+      data: objMin,
+      fill: false,
+      borderColor: '#0F4392',
+      backgroundColor: '#0F4392'
+    };    
+    var datasetVred = {
+      label: lbl2,
+      data: vrednosti,
+      fill: false,
+      borderColor: '#21dfc8',
+      backgroundColor: '#21dfc8',
+      //lineTension: 0
+    };
+
+    // INDICATORS CHART
+    var divChart = document.createElement("div");
+    $(divChart).addClass('diagram');
+    //divEl.appendChild(divIndicators);
+    divEl.appendChild(divChart);
+    //class="diagram"
+
+    //<canvas id="chart_2"></canvas>
+    var canvasInd = document.createElement("canvas");
+    var chartId = 'chart_' + i;
+    
+    
+    $(canvasInd).attr("id", chartId);
+    divChart.appendChild(canvasInd);
+
+
+
+    var ctx2 = document.getElementById(chartId).getContext('2d');
+    //console.log(ctx2);
+
+    var timeFormat2 = 'DD/MM/YYYY';
+
+    var indChart = new Chart(ctx2, {
+      type: 'line',
+      //labels: sviDatumi,
+          data:    {
+            datasets: 
+            [datasetMax, datasetMin, datasetVred]
+            
+          },
+          options: {
+            legend: {
+              display: false,
+            },
+            responsive:true,
+            maintainAspectRatio: false,
+            title:      {
+                display: true,
+                text: keys,
+                position: 'bottom' 
+            },
+            scales:     {
+                xAxes: [{
+                  type: 'time',
+                  distribution: 'linear',
+                   time: {
+                          format: timeFormat,
+                          tooltipFormat: 'MMM DD, HH:mm',
+                         displayFormats: {
+                             day: 'MMM DD'
+                         },
+                     },
+                 scaleLabel: {
+                //         //display:     true,
+                         labelString: 'Date'
+                     },
+                   ticks: {            
+                       min: json.graph_range[0]['Min date'], 
+                       max: json.graph_range[0]['Max date'], 
+                     }
+                }],
+                yAxes: [{
+                    scaleLabel: {
+                        //display:     true,
+                        //labelString: 'value'
+                    },
+                    ticks: {
+                        //beginAtZero:true
+                    }
+                }]
+            }
+          }
+    } );
+   //console.log(indChart);
+
+
+    }
+
+  // $('#indicators td:nth-child(1)').addClass('right');
+  // $('#indicators td:nth-child(2)').addClass('right');
+  // $('#indicators td:nth-child(4)').addClass('right');
+
+ 
+  // $('#indicators th:nth-child(1)').addClass('right');
+  // $('#indicators th:nth-child(2)').addClass('right');
+  // $('#indicators th:nth-child(4)').addClass('right');
+
 </script>
+
+<script>
+  //-------------------------------------
+  // Blood Pressure(mmHg)
+  //-------------------------------------
+
+  console.log(json);
+
+  //console.log(hh1);
+  //console.log(Object.entries(json))
+  const mapJson = new Map(Object.entries(json));
+  //console.log(mapJson);
+
+  var pressureHead = Object.keys(json)[3];
+  var pressureValues = Object.values(json)[3];
+  //console.log(pressureValues);
+  $('#pressureHead').html(pressureHead);
+
+  col3 = [];
+
+  for (var t = 0; t < pressureValues.length; t++) {
+      for (var key in pressureValues[t]) {
+          if (col3.indexOf(key) === -1 ) {
+              col3.push(key);
+          }
+      }
+  }
+
+  // CREATE DYNAMIC TABLE.
+  var bloodTable = document.createElement("table");
+  $(bloodTable).addClass( 'table table-striped' );
+  $(bloodTable).attr("id", "blTable")
+  var tHead3 = document.createElement("thead");    // TABLE thead.
+  $(tHead3).addClass( 'green-table' );
+  bloodTable.appendChild(tHead3);
+  // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
+
+  var tr3 = tHead3.insertRow(-1);                   // TABLE ROW.
+
+  var vredDonji, vredGornji;
+
+
+  for (var u = 0; u < col3.length; u++) {  
+    var th = document.createElement("th"); 
+    $(th).addClass( 'col' );     // TABLE HEADER.
+    th.innerHTML = col3[u];
+    tr3.appendChild(th);                
+  }
+
+  var tBody3 = document.createElement("tbody");    // TABLE ROW.
+  bloodTable.appendChild(tBody3);
+
+
+ var allGornji = [];
+ var allDonji = [];
+    
+
+  // ADD JSON DATA TO THE TABLE AS ROWS.
+  for (var i = 0; i < pressureValues.length; i++) {
+
+
+    vredGornji = pressureValues[i][col3[5]];
+    vredDonji =  pressureValues[i][col3[6]];
+    var datum3 = new Date(pressureValues[i][col3[4]].replace(/-/g, "/"));
+    //console.log(vredGornji, vredDonji, datum3);
+
+    var array = ['x', 'y'];
+    var objGornji = {
+        [array[0]]: datum3,
+        [array[1]]: vredGornji,
+    };
+    var objDonji = {
+        [array[0]]: datum3,
+        [array[1]]: vredDonji,
+    };
+
+    allGornji.push(objGornji);
+    allDonji.push(objDonji);       
+
+    var keys = Object.keys(pressureValues[i]);
+
+    var bloodObjects = pressureValues[i];
+
+    //console.log(keys, bloodObjects)
+          
+    tr3 = tBody3.insertRow(-1);
+
+    for (var j = 0; j < col3.length; j++) {
+      var aa = col3[3];
+      //console.log(aa);
+
+        var tabCell = tr3.insertCell(-1);
+        //console.log(pressureValues[i][col3[j]]);
+
+        //hh[i][col[j]];
+        tabCell.innerHTML = pressureValues[i][col3[j]];           
+    }
+
+  }
+
+  // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
+  var divContainer3 = document.getElementById("bloodTable");
+  divContainer3.innerHTML = "";
+  divContainer3.appendChild(bloodTable);
+
+  // $('#blTable td:nth-child(1)').addClass('right');
+  // $('#blTable td:nth-child(2)').addClass('right');
+  // $('#blTable td:nth-child(3)').addClass('right');
+  // $('#blTable td:nth-child(4)').addClass('right');
+  // $('#blTable td:nth-child(7)').addClass('right');
+  // $('#blTable td:nth-child(6)').addClass('right');
+
+  // $('#blTable th:nth-child(1)').addClass('right');
+  // $('#blTable th:nth-child(2)').addClass('right');
+  // $('#blTable th:nth-child(3)').addClass('right');
+  // $('#blTable th:nth-child(4)').addClass('right');
+  // $('#blTable th:nth-child(6)').addClass('right');
+  // $('#blTable th:nth-child(7)').addClass('right');
+
+  // Blood Pressure Chart
+
+  console.log(col3);
+
+  var datasetMinhh = {
+      label: lbl1,
+      data: minVrednosti,
+      fill: false,
+      borderColor: '#0F4392'
+    };
+
+  var ctx3 = document.getElementById("bloodChart").getContext('2d');
+
+  var bloodChart = new Chart(ctx3, {
+      type: 'line',
+      //labels: sviDatumi,
+          data:    {
+            datasets: 
+            [
+              {
+                //Max vrednost donji
+                label: col3[2],
+                data: [
+                  { x: new Date(json.graph_range[0]['Min date']), y: 90,},
+                  { x: new Date(json.graph_range[0]['Max date']), y: 90}
+                ],
+                fill: false,
+                //red
+                borderColor: '#FF4949',
+                backgroundColor: '#FF4949'
+              },
+              {
+                //Max vrednost gornji
+                label: col3[0],
+                data: [
+                  { x: new Date(json.graph_range[0]['Min date']), y: 138,},
+                  { x: new Date(json.graph_range[0]['Max date']), y: 138}
+                ],
+                fill: false,
+                //red
+                borderColor: '#FF4949',
+                backgroundColor: '#FF4949'
+              },
+              {
+                //Min vrednost donji
+                label: col3[3],
+                data: [
+                  { x: new Date(json.graph_range[0]['Min date']), y: 60,},
+                  { x: new Date(json.graph_range[0]['Max date']), y: 60}
+                ],
+                fill: false,
+                //blue
+                borderColor: '#0F4392',
+                backgroundColor: '#0F4392'
+              },
+              {
+
+                //Min vrednost gornji
+                label: col3[1],
+                data: [
+                  { x: new Date(json.graph_range[0]['Min date']), y: 110,},
+                  { x: new Date(json.graph_range[0]['Max date']), y: 110}
+                ],
+                fill: false,
+                //blue
+                borderColor: '#0F4392',
+                backgroundColor: '#0F4392'
+              },
+              {
+                //vrednost gornji
+                label: col3[5],
+                data: allGornji ,
+                fill: false,
+                borderColor: '#21dfc8',
+                //lineTension: 0,
+                backgroundColor: '#21dfc8'
+              },
+              {
+                //vrednost donji
+                label: col3[6],
+                data: allDonji,
+                fill: false,
+                borderColor: '#21dfc8',
+                //lineTension: 0,
+                backgroundColor: '#21dfc8'
+              },
+
+            ]
+            
+          },
+          options: {
+            legend: {
+              display: false,
+            },
+            responsive:true,
+            maintainAspectRatio: false,
+            title:      {
+                display: true,
+                text: pressureHead,
+                position: 'bottom' 
+            },
+            scales:     {
+                xAxes: [{
+                  type: 'time',
+                  distribution: 'linear',
+                   time: {
+                          format: timeFormat,
+                          tooltipFormat: 'MMM DD, HH:mm',
+                         displayFormats: {
+                             day: 'MMM DD'
+                         },
+                     },
+                // scaleLabel: {
+                //         //display:     true,
+                //         labelString: 'Date'
+                //     },
+                   ticks: {            
+                       min: json.graph_range[0]['Min date'], 
+                       max: json.graph_range[0]['Max date'], 
+                     }
+                }],
+                yAxes: [{
+                    scaleLabel: {
+                        //display:     true,
+                        //labelString: 'value'
+                    },
+                    ticks: {
+                        //beginAtZero:true
+                    }
+                }]
+            }
+          }
+    } );
+
+    //console.log(bloodChart);
+  
+</script>
+
+
+
+
 </body>
 </html>
